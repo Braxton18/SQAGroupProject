@@ -2,12 +2,13 @@
 #include <string>
 #include <limits>
 #include "registration.h"
+#include "prodManagement.h"
 using namespace std;
 
 // void registration ();
 // void removal ();
-// void productAdd ();
-// void productRem ();
+// void createListing ();
+// void removeListing ();
 // void shopping ();
 // void accView ();
 // void redRewards();
@@ -38,12 +39,15 @@ int main (){
 //     else if(choice == remov){
 //         removal();
 //     }
-//     else if(choice == prodAdd){
-//         productAdd();
-//     }
-//      else if(choice == prodRem){
-//         productRem();
-//     }
+    else if(choice == prodAdd){
+        productList.push_front( createListing() );
+    }
+    else if(choice == prodRem){
+        string input;
+        cout << "Enter the name or ID of the product listing to remove: ";
+        cin >> input;           //input validation is taken care of in function
+        removeListing( input );
+    }
 //      else if(choice == shop){
 //         shopping();
 //     }

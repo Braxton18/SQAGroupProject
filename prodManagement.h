@@ -12,10 +12,9 @@ struct ProdNode{
     int stock;
 };
 
-forward_list<ProdNode> productList;
 
 ProdNode createListing();
-bool removeListing(string);
+bool removeListing(forward_list<ProdNode>, string);
 bool addStock(int);
 bool removeStock(int);
 

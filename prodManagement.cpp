@@ -37,8 +37,9 @@ ProdNode createListing(){       //should this be dynamically allocated, how to d
 
 //removes a product listing from the records
 //paramaters: product: either the product name or ID to be removed
+//          productList: single linked list of products
 //return: bool: true if listing successully removed, otherwise false
-bool removeListing(string product = ""){
+bool removeListing(forward_list<ProdNode> productList, string product = "" ){
     if( product == "" ){
         cout << "No product specified\n";
         return false;

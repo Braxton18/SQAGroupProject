@@ -23,6 +23,7 @@ int main (){
     int shop=5;
     int view= 6;
     int rewards = 7;
+    forward_list<ProdNode> productList;
     while(true){
 
     cout << "Please indicate the number of your desired function given the following choices: \n0. Quit \n1. Account Registration \n2. Account Removal \n3. Product Addition \n4. Product Removal \n5. Shopping \n6. View Account \n7. Redeem Rewards \n\n Please ensure that your entry is one of the integer options listed." << endl;
@@ -46,7 +47,7 @@ int main (){
         string input;
         cout << "Enter the name or ID of the product listing to remove: ";
         cin >> input;           //input validation is taken care of in function
-        removeListing( input );
+        removeListing( productList, input );
     }
 //      else if(choice == shop){
 //         shopping();

@@ -62,7 +62,7 @@ void goToRegistration(){
 
     //Credit Card Number Creation
     do{
-        cout << "Please eneter your credit card number. Ensure that it is in the format XXXX-XXXX-XXXX: ";
+        cout << "Please enter your credit card number. Ensure that it is in the format XXXX-XXXX-XXXX: ";
         cin >> cardNum;
     }while(!checkCard(cardNum));
 

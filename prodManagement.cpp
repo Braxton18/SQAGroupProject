@@ -1,7 +1,7 @@
-#include "prodManagement.h"
 #include <iostream>
 #include <string>
 #include <forward_list>
+#include "prodmanagement.h"
 using namespace std;
 
 
@@ -9,13 +9,13 @@ using namespace std;
 //NOTE: must still add the object itself to the record
 //parameters: none
 //return: ProdNode: object containing all of the information for the specified product
-ProdNode createListing(){       //should this be dynamically allocated, how to deallocate a linked list?
+ProdNode createListing(){
     ProdNode newListing;
     cout << "\nEnter the product ID of the new product (up to 5 digits): ";
     string temp;
     cin >> temp;
     while ( temp.length() < 5 ){            //TODO: validate ID input
-        temp.push_back('0');                //TODO: i don't like this
+        temp.insert(temp.begin(), '0');
     }
     newListing.prodID = "Prod" + temp;      //TODO: check input ID against already existing IDs
 
@@ -39,7 +39,7 @@ ProdNode createListing(){       //should this be dynamically allocated, how to d
 //paramaters: product: either the product name or ID to be removed
 //          productList: single linked list of products
 //return: bool: true if listing successully removed, otherwise false
-bool removeListing(forward_list<ProdNode> productList, string product = "" ){
+bool removeListing(forward_list<ProdNode>& productList, string product = "" ){
     if( product == "" ){
         cout << "No product specified\n";
         return false;
@@ -54,22 +54,8 @@ bool removeListing(forward_list<ProdNode> productList, string product = "" ){
                 //continue;
             }
         }
-        cout << "Product not found\n";
         return false;
     }
     return false;
 }
 
-//adds a specified number to the current stock level
-//paramaters: num: the number of items being added to stock level, default is 1
-//return: bool: true if stock added successfully, false otherwise
-bool addStock( int num = 1 ){
-    return false;
-}
-
-//removes a specified number from the current stock level
-//paramaters: num: the number of items being removed from the stock level, default is 1
-//return: bool: true if stock removed successfully, false otherwise
-bool removeStock( int num = 1 ){
-    return false;
-}

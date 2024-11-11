@@ -1,8 +1,11 @@
 #include <iostream>
 #include <string>
 #include <limits>
+#include <unistd.h>
 #include "registration.h"
 #include "prodManagement.h"
+#include "fileManagement.h"
+
 using namespace std;
 
 // void registration ();
@@ -23,10 +26,15 @@ int main (){
     int shop=5;
     int view= 6;
     int rewards = 7;
+    const double sleepTime{ 1.5 };
     forward_list<ProdNode> productList;
-    while(true){
 
-    cout << "Please indicate the number of your desired function given the following choices: \n0. Quit \n1. Account Registration \n2. Account Removal \n3. Product Addition \n4. Product Removal \n5. Shopping \n6. View Account \n7. Redeem Rewards \n\n Please ensure that your entry is one of the integer options listed." << endl;
+    //loadCustomers();
+    loadProducts(productList, "products.txt");
+    //loadTransactions();       //not sure if this is actually needed
+
+    while(true){
+    cout << "\nPlease indicate the number of your desired function given the following choices: \n0. Quit \n1. Account Registration \n2. Account Removal \n3. Product Addition \n4. Product Removal \n5. Shopping \n6. View Account \n7. Redeem Rewards \n\n Please ensure that your entry is one of the integer options listed." << endl;
     cin >> choice;
     if (cin.fail()) {
             cin.clear();
@@ -42,12 +50,20 @@ int main (){
 //     }
     else if(choice == prodAdd){
         productList.push_front( createListing() );
+        cout << "Listing added\n";
+        sleep(sleepTime);
     }
     else if(choice == prodRem){
         string input;
         cout << "Enter the name or ID of the product listing to remove: ";
         cin >> input;           //input validation is taken care of in function
-        removeListing( productList, input );
+        if( removeListing( productList, input )){
+            cout << "Product successfully removed\n";
+            sleep(sleepTime);
+        }else{
+            cout << "Product not found\n";
+            sleep(sleepTime);
+        };
     }
 //      else if(choice == shop){
 //         shopping();
@@ -59,6 +75,9 @@ int main (){
 //         redRewards();
 //     }
 else if (choice == 0){
+    saveProductData(productList, "products.txt");
+    //TODO: saveCustomerData();
+    //TODO: saveTransactions();     //since we whould really need to access transactions, this may be easy to do in the transaction function, just open->append->close
     return 0;
 }
     }

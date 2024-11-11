@@ -1,0 +1,10 @@
+product 1
+	Prod00089
+	test
+	3
+	4
+product 2
+	Prod00095
+	test4
+	6
+	7

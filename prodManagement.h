@@ -1,8 +1,9 @@
 #ifndef PRODMANAGEMENT_H
-#define PRODMANGEMENT_H
+#define PRODMANAGEMENT_H
 
 #include <string>
 #include <forward_list>
+#include <iostream>
 using namespace std;
 
 struct ProdNode{
@@ -14,7 +15,7 @@ struct ProdNode{
 
 
 ProdNode createListing();
-bool removeListing(forward_list<ProdNode>, string);
+bool removeListing(forward_list<ProdNode>&, string);
 bool addStock(int);
 bool removeStock(int);
 
@@ -28,6 +29,5 @@ class Product{
     private:
 };
 */
-
 
 #endif

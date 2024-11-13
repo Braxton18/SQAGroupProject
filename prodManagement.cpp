@@ -5,10 +5,6 @@
 using namespace std;
 
 
-//creates a ProdNode object to be added to the product record
-//NOTE: must still add the object itself to the record
-//parameters: none
-//return: ProdNode: object containing all of the information for the specified product
 ProdNode createListing(){
     ProdNode newListing;
     cout << "\nEnter the product ID of the new product (up to 5 digits): ";
@@ -35,10 +31,7 @@ ProdNode createListing(){
     return newListing;
 }
 
-//removes a product listing from the records
-//paramaters: product: either the product name or ID to be removed
-//          productList: single linked list of products
-//return: bool: true if listing successully removed, otherwise false
+
 bool removeListing(forward_list<ProdNode>& productList, string product = "" ){
     if( product == "" ){
         cout << "No product specified\n";

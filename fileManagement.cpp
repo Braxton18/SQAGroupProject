@@ -6,7 +6,6 @@
 
 using namespace std;
 
-//f() implementation and shit
 bool loadCustomers(string fileName){
     return false;
 }
@@ -35,16 +34,6 @@ bool loadProducts(forward_list<ProdNode>& prodList, string fileName){
     return true;
 }
 
-/*
-bool loadTransactions(string fileName){
-    return false;
-}
-*/
-
-bool saveCustomerData(string fileName){
-    return false;
-}
-
 bool saveProductData(forward_list<ProdNode>& prodList, string fileName){
     ofstream fout( fileName );
     if( ! fout.is_open() ){
@@ -64,9 +53,3 @@ bool saveProductData(forward_list<ProdNode>& prodList, string fileName){
     }
     return true;
 }
-
-/*
-bool saveTransactions(){
-    return false;
-}
-*/

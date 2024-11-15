@@ -2,7 +2,6 @@
 
 //get customer information
     //maybe load into object?
-    
 
 //display products
     //X at a time

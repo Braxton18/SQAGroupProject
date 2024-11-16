@@ -2,12 +2,39 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include "fileManagement.h"
 #include "prodManagement.h"
+#include "registration.h"
 
 using namespace std;
 
-bool loadCustomers(string fileName){
-    return false;
+bool loadCustomers(forward_list<UserNode>& userList, string fileName){
+    ifstream fin(fileName);
+    if ( !fin.is_open() ){
+        cout << "input file not found for products\n";
+        return false;
+    }else{
+        string line;
+        UserNode user;
+        while( getline( fin, line )){           //customer X
+            getline( fin, line );               //ID
+            user.ID = removeLead(line);
+            getline( fin, line );               //user name
+            user.userName = removeLead(line);
+            getline( fin, line );               //first name
+            user.fName = removeLead(line);
+            getline( fin, line );               //last name
+            user.lName = removeLead(line);
+            getline( fin, line );               //age
+            user.age = stoi(removeLead(line));
+            getline( fin, line );               //card
+            user.cardNum = removeLead(line);
+            getline( fin, line );               //points
+            user.points = stoi(removeLead(line));
+
+            userList.push_front( user );
+        }
+    }
 }
 
 bool loadProducts(forward_list<ProdNode>& prodList, string fileName){
@@ -53,3 +80,8 @@ bool saveProductData(forward_list<ProdNode>& prodList, string fileName){
     }
     return true;
 }
+
+string removeLead(string line){
+    return line.substr( line.find_last_of(':') + 2);
+};
+

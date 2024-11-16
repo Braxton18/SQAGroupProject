@@ -6,6 +6,15 @@
 #include <string>
 #include <forward_list>
 #include "prodManagement.h"
+#include "registration.h"
+
+using namespace std;
+
+//read customer information from text file and adds customers to a forward_list of customer nodes
+//Parameters: userList: the forward_list to add nodes to
+//          fileName: name of the .txt file to pull customer info from, Format: "XXX.txt"
+//Return: true if customers successfully loaded, false otherwise
+bool loadCustomers(forward_list<UserNode>& userList, string fileName);
 
 //read product information from a text file and adds products to  a forward_list of product nodes
 //Parameters: prodList: the forward_list to add nodes to
@@ -18,5 +27,10 @@ bool loadProducts(forward_list<ProdNode>& prodList, string fileName);
 //          fileName: name of the .txt file to save product information to, Format: "XXX.txt"
 //Return: true if products successfully saved, false otherwise
 bool saveProductData(forward_list<ProdNode>& prodList, string fileName);
+
+//removes substring up to the last white space, keeping only the last word
+//Parameters: line: string to remove substring from
+//Return: string, last word of the line
+string removeLead(string line);
 
 #endif

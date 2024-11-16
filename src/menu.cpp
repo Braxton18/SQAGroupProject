@@ -28,10 +28,9 @@ int main (){
     int rewards = 7;
     const double sleepTime{ 1.5 };
     forward_list<ProdNode> productList;
+    forward_list<UserNode> userList;
 
-    //loadCustomers();
-    loadProducts(productList, "products.txt");
-    //loadTransactions();       //not sure if this is actually needed
+    loadProducts(productList, "products.txt");      //technically returns T/F if wanted to ensure file was found
 
     while(true){
         cout << "\nPlease indicate the number of your desired function given the following choices: \n0. Quit \n1. Account Registration \n2. Account Removal \n3. Product Addition \n4. Product Removal \n5. Shopping \n6. View Account \n7. Redeem Rewards \n\n Please ensure that your entry is one of the integer options listed." << endl;
@@ -65,9 +64,11 @@ int main (){
                 sleep(sleepTime);
             };
         }
-    //      else if(choice == shop){
-    //         shopping();
-    //     }
+          else if(choice == shop){
+            userList.clear();
+            loadCustomers( userList, "customers.txt" );
+            shopping( userList, productList );
+         }
     //      else if(choice == view){ 
     //         accView();
     //     }

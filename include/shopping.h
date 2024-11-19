@@ -27,11 +27,20 @@ void displayProds( forward_list<ProdNode> prodList, int x, int n );
 //finds and attempts to purchase a specified product
 //Parameters: prodList: forward list of products
 //          product: either product ID or name to buy
+//          amnt: number of the specified product the user would like to buy
 //          it: iterator pointing to the user trying to buy the product
+//          spent: amount spent by the user in this transaction
 //Return: 0 if successful
-//          1 if not enought stock
+//          1 if not enough stock
 //          2 if product not found
-int purchase( forward_list<ProdNode> prodList, string product, forward_list<UserNode>::iterator it );
+int purchase( forward_list<ProdNode> prodList, string product, int amnt, forward_list<UserNode>::iterator it, int& spent );
+
+//finds the product in a forward_list specified by "product"
+//Parameters: prodList: forward list of products
+//          product: product ID or name of the product to buy
+//Return: iterator to the ProdNode containing the desired product, NULL if product not found
+forward_list<ProdNode>::iterator findProduct( forward_list<ProdNode> prodList, string product );
+
 
 
 

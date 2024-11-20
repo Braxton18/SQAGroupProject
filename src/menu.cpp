@@ -6,6 +6,8 @@
 #include "prodManagement.h"
 #include "fileManagement.h"
 #include "shopping.h"
+#include "accountRemoval.h"
+#include "accountViewing.h"
 
 using namespace std;
 
@@ -47,9 +49,9 @@ int main (){
         if (choice == regis){
             goToRegistration();
         }
-    //     else if(choice == remov){
-    //         removal();
-    //     }
+        else if(choice == remov){
+            goToRemoval();
+        }
         else if(choice == prodAdd){
             productList.push_front( createListing() );
             cout << "Listing added\n";
@@ -71,9 +73,9 @@ int main (){
             loadCustomers( userList, "customers.txt" );
             transList.push_front( shopping( userList, productList, transList ) );
          }
-    //      else if(choice == view){ 
-    //         accView();
-    //     }
+         else if(choice == view){ 
+            goToView();
+        }
     //      else if(choice == rewards)
     //         redRewards();
     //     }

@@ -8,8 +8,13 @@ using namespace std;
 void shopping( forward_list<UserNode> userList, forward_list<ProdNode> prodList ){
     string userID;
     //get user iterator to access
+<<<<<<< Updated upstream
     forward_list<UserNode>::iterator userIt{ NULL };
     for( int i{ 0 }; i < 10 && userIt == NULL; ++i ){       //only allow 10 attempts
+=======
+    forward_list<UserNode>::iterator userIt{ userList.end() };
+    for( int i{ 0 }; i < 10 && userIt == userList.end(); ++i ){       //only allow 10 attempts
+>>>>>>> Stashed changes
         cout << "Please enter either your username or userID: ";
         cin userID;
         userId = findUser( userID );
@@ -51,6 +56,11 @@ void shopping( forward_list<UserNode> userList, forward_list<ProdNode> prodList 
         }while( purchaseFlag == 0 )
 
     }
+<<<<<<< Updated upstream
+=======
+    givePoints(userIt, transaction.total, userList);
+    return transaction;
+>>>>>>> Stashed changes
 };
 
 forward_list<UserNode>::iterator findUser( string user, forward_list<UserNode> userList ){
@@ -132,6 +142,21 @@ forward_list<ProdNode>::iterator findProduct( forward_list<ProdNode> prodList, s
     return NULL;
 }
 
+void givePoints(forward_list<UserNode>::iterator userIt, int total, forward_list<UserNode>& userList){
+    ifstream fin("rewards.txt");
+    if(! fin.is_open()){
+        cout << "rewards file not found, no points could be added\n";
+        return;
+    }else{
+        string line;
+        getline(fin, line);     //"allocation per dollar"
+        getline(fin, line);     //alloc
+        cout << "alloc: " << stoi(line) << endl;
+        int points = stoi(line) * total;
+        (*userIt).points += points;
+        //saveCustomers(userList, "customers.txt");     //do outside of function, compile error
+    }
+}
 
 
 //buy

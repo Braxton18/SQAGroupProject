@@ -28,9 +28,29 @@ bool loadProducts(forward_list<ProdNode>& prodList, string fileName);
 //Return: true if products successfully saved, false otherwise
 bool saveProductData(forward_list<ProdNode>& prodList, string fileName);
 
+<<<<<<< Updated upstream
+=======
+//write data from a forward_list of transaction nodes to a .txt file for storage
+//Parameters: transList: forward_list containing transaction nodes to save
+//          fileName: name of the .txt file to save transaction information to, Format: "XXX.txt"
+//Return: true if transactions successfully saved, false otherwise
+bool saveTransactions(forward_list<TransNode>& transList, string fileName);
+
+//write data from a forward_list of user nodes to a .txt file for storage
+//Parameters: transList: forward_list containing user nodes to save
+//          fileName: name of the .txt file to save user information to, Format: "XXX.txt"
+//Return: true if users successfully saved, false otherwise
+bool saveCustomers(forward_list<UserNode>& userList, string fileName);
+
+>>>>>>> Stashed changes
 //removes substring up to the last white space, keeping only the last word
 //Parameters: line: string to remove substring from
 //Return: string, last word of the line
 string removeLead(string line);
 
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 #endif

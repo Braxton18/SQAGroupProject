@@ -5,6 +5,8 @@
 #include "registration.h"
 #include "prodManagement.h"
 #include "fileManagement.h"
+#include "shopping.h"
+#include "rewards.h"
 
 using namespace std;
 
@@ -67,14 +69,16 @@ int main (){
           else if(choice == shop){
             userList.clear();
             loadCustomers( userList, "customers.txt" );
-            shopping( userList, productList );
-         }
+            transList.push_front( shopping( userList, productList, transList ) );
+            saveCustomers(userList, "customers.txt");
+        }
     //      else if(choice == view){ 
     //         accView();
     //     }
-    //      else if(choice == rewards)
-    //         redRewards();
-    //     }
+        else if(choice == rewards){
+            loadCustomers( userList, "customers.txt" );
+            rewardsMenu(userList);
+        }
         else if (choice == 0){
             saveProductData(productList, "products.txt");
             //TODO: saveCustomerData();

@@ -2,6 +2,15 @@
 #define SHOPPING_H
 
 #include <string>
+<<<<<<< Updated upstream
+=======
+#include <forward_list>
+#include <iostream>
+#include <unistd.h>
+#include <vector>
+#include <sstream>
+#include <fstream>
+>>>>>>> Stashed changes
 #include "registration.h"
 #include "prodManagement.h"
 
@@ -41,6 +50,8 @@ int purchase( forward_list<ProdNode> prodList, string product, int amnt, forward
 //Return: iterator to the ProdNode containing the desired product, NULL if product not found
 forward_list<ProdNode>::iterator findProduct( forward_list<ProdNode> prodList, string product );
 
+//gives points to the user for their purchase
+void givePoints(forward_list<UserNode>::iterator userIt, int total, forward_list<UserNode>& userList);
 
 
 

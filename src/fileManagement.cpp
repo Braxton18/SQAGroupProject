@@ -81,6 +81,56 @@ bool saveProductData(forward_list<ProdNode>& prodList, string fileName){
     return true;
 }
 
+<<<<<<< Updated upstream
+=======
+bool saveTransactions(forward_list<TransNode>& transList, string fileName){
+    ofstream fout( fileName );
+    if( ! fout.is_open() ){
+        cout << "output file not found for transactions\n";
+        return false;
+    }else{
+        int i{ 1 };
+        while( ! transList.empty() ){               //write everything to text file
+            fout << "Transaction " << i << endl         //note, we don't edit transactions so rewriting prev transactions is pointless, but easy
+                << '\t' << transList.front().transID << endl 
+                << '\t' << transList.front().userID << endl
+                << '\t' << transList.front().prodIDs << endl  
+                << '\t' << transList.front().total << endl 
+                << '\t' << transList.front().rewards << endl;
+            transList.pop_front();
+            ++i;
+        }
+        fout.close();
+    }
+    return true;
+};
+
+bool saveCustomers(forward_list<UserNode>& userList, string fileName){
+        ofstream fout( fileName );
+    if( ! fout.is_open() ){
+        cout << "output file not found for users\n";
+        return false;
+    }else{
+        int i{ 1 };
+        while( ! userList.empty() ){               //write everything to text file
+            fout << "Customer " << i << endl         //note, we don't edit transactions so rewriting prev transactions is pointless, but easy
+                << '\t' << "ID: " << userList.front().ID << endl 
+                << '\t' << "User Name: " << userList.front().userName << endl
+                << '\t' << "First Name: " << userList.front().fName << endl  
+                << '\t' << "Last Name: " << userList.front().lName << endl 
+                << '\t' << "Age: " << userList.front().age << endl
+                << '\t' << "Credit Card Number: " << userList.front().cardNum << endl 
+                << '\t' << "Total Reward Points: " << userList.front().points << endl;
+            userList.pop_front();
+            ++i;
+        }
+        fout.close();
+    }
+    return true;
+};
+
+
+>>>>>>> Stashed changes
 string removeLead(string line){
     return line.substr( line.find_last_of(':') + 2);
 };

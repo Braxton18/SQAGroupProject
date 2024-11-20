@@ -5,6 +5,7 @@
 #include "registration.h"
 #include "prodManagement.h"
 #include "fileManagement.h"
+#include "shopping.h"
 
 using namespace std;
 
@@ -29,8 +30,10 @@ int main (){
     const double sleepTime{ 1.5 };
     forward_list<ProdNode> productList;
     forward_list<UserNode> userList;
+    forward_list<TransNode> transList;
 
     loadProducts(productList, "products.txt");      //technically returns T/F if wanted to ensure file was found
+    loadTransactions(transList, "transactions.txt");
 
     while(true){
         cout << "\nPlease indicate the number of your desired function given the following choices: \n0. Quit \n1. Account Registration \n2. Account Removal \n3. Product Addition \n4. Product Removal \n5. Shopping \n6. View Account \n7. Redeem Rewards \n\n Please ensure that your entry is one of the integer options listed." << endl;
@@ -65,9 +68,8 @@ int main (){
             };
         }
           else if(choice == shop){
-            userList.clear();
             loadCustomers( userList, "customers.txt" );
-            shopping( userList, productList );
+            transList.push_front( shopping( userList, productList, transList ) );
          }
     //      else if(choice == view){ 
     //         accView();
@@ -77,8 +79,7 @@ int main (){
     //     }
         else if (choice == 0){
             saveProductData(productList, "products.txt");
-            //TODO: saveCustomerData();
-            //TODO: saveTransactions();     //since we whould really need to access transactions, this may be easy to do in the transaction function, just open->append->close
+            saveTransactions(transList, "transactions.txt");
             return 0;
         }
     }

@@ -14,3 +14,12 @@ run:
 	./$(TARGET_EXEC)
 clean:
 	rm $(TARGET_EXEC)
+cleartxt:
+	> products.txt 
+	> uniqueNums.txt 
+	> userNames.txt 
+	> cardNums.txt 
+	> customer.txt 
+	> customerNum.txt 
+	> customers.txt 
+	> transactions.txt

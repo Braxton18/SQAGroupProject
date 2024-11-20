@@ -18,22 +18,26 @@ bool loadCustomers(forward_list<UserNode>& userList, string fileName){
         string line;
         UserNode user;
         while( getline( fin, line )){           //customer X
-            getline( fin, line );               //ID
-            user.ID = removeLead(line);
-            getline( fin, line );               //user name
-            user.userName = removeLead(line);
-            getline( fin, line );               //first name
-            user.fName = removeLead(line);
-            getline( fin, line );               //last name
-            user.lName = removeLead(line);
-            getline( fin, line );               //age
-            user.age = stoi(removeLead(line));
-            getline( fin, line );               //card
-            user.cardNum = removeLead(line);
-            getline( fin, line );               //points
-            user.points = stoi(removeLead(line));
+            if(line[0] != 'C'){
+                continue;       //skip empty line
+            }else{
+                getline( fin, line );               //ID
+                user.ID = removeLead(line);
+                getline( fin, line );               //user name
+                user.userName = removeLead(line);
+                getline( fin, line );               //first name
+                user.fName = removeLead(line);
+                getline( fin, line );               //last name
+                user.lName = removeLead(line);
+                getline( fin, line );               //age
+                user.age = toInt(line);
+                getline( fin, line );               //card
+                user.cardNum = removeLead(line);
+                getline( fin, line );               //points
+                user.points = toInt(line);
 
-            userList.push_front( user );
+                userList.push_front( user );
+            }
         }
         fin.close();
     }

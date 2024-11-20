@@ -9,14 +9,14 @@ TransNode shopping( forward_list<UserNode>& userList, forward_list<ProdNode>& pr
     string userID;
     TransNode transaction = {.total = 0, .rewards = 0};
     //get user iterator to access
-    forward_list<UserNode>::iterator userIt{ userList.before_begin() };
-    for( int i{ 0 }; i < 10 && userIt == userList.before_begin(); ++i ){       //only allow 10 attempts
+    forward_list<UserNode>::iterator userIt{ userList.end() };
+    for( int i{ 0 }; i < 10 && userIt == userList.end(); ++i ){       //only allow 10 attempts
         cout << "Please enter either your username or userID: ";
         cin >> userID;
         userIt = findUser( userID, userList );
     }
     if( userIt == userList.end() ){   //Fort Knox level security
-        cout << "max attempts made, returning to menu...";
+        cout << "max attempts made, returning to menu...\n";
         sleep( 1.5 );
         return transaction;
     }else{

@@ -247,7 +247,7 @@ void saveCustomerInformation(){
         outFile << "\tLast Name: " << lastName << "\n"; 
         outFile << "\tAge: " << age << "\n"; 
         outFile << "\tCredit Card Number: " << cardNum << "\n"; 
-        outFile << "\tTotal Reward Points: " << userPoints << "\n";
+        outFile << "\tTotal Reward Points: " << userPoints << "\n\n";
         outFile.close(); 
     }
     else{

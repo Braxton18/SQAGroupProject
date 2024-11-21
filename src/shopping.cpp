@@ -10,7 +10,7 @@ TransNode shopping( forward_list<UserNode>& userList, forward_list<ProdNode>& pr
     TransNode transaction = {.total = 0, .rewards = 0};
     //get user iterator to access
     forward_list<UserNode>::iterator userIt{ userList.end() };
-    for( int i{ 0 }; i < 10 && userIt == userList.end(); ++i ){       //only allow 10 attempts
+    for( int i{ 0 }; i < 3 && userIt == userList.end(); ++i ){       //only allow 3 attempts
         cout << "Please enter either your username or userID: ";
         cin >> userID;
         userIt = findUser( userID, userList );
@@ -32,6 +32,7 @@ TransNode shopping( forward_list<UserNode>& userList, forward_list<ProdNode>& pr
             cin >> product;
             //menu options
             if( product == "0" ){
+                giveRewards( userIt, transaction.total );
                 return transaction;
             }else if( product == "1" ){
                 n += 5;
@@ -139,6 +140,25 @@ int toInt( string s ){
         return stoi(temp);
     }else{
         return 0;
+    }
+}
+
+void giveRewards( forward_list<UserNode>::iterator userIt, int totalCharge ){
+    //get alloc (amount of points per dollar spent)
+    int alloc{ 0 };
+    ifstream fin("rewards.txt");
+    if(! fin.is_open() ){
+        cout << "input file not found for rewards, can't grant reward points\n";
+        return;
+    }else{
+        string line;
+        getline(fin, line);     //"Allocation per dollar"
+        if( getline(fin, line) ){
+            alloc = stoi(line);     //number of alloc
+            (*userIt).points += totalCharge * alloc;
+        }else{
+            return;       //file must be empty, no need to add or calculate points
+        }
     }
 }
 

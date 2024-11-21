@@ -44,6 +44,31 @@ bool loadCustomers(forward_list<UserNode>& userList, string fileName){
     return true;
 }
 
+bool saveCustomers(forward_list<UserNode>& userList, string fileName){
+        ofstream fout( fileName );
+    if( ! fout.is_open() ){
+        cout << "output file not found for products\n";
+        return false;
+    }else{
+        int i{ 1 };
+        while( ! userList.empty() ){
+            fout << "Customer " << i << endl 
+                << "\tID: " << userList.front().ID << endl 
+                << "\tUser Name: " << userList.front().userName << endl 
+                << "\tFirst Name: " << userList.front().fName << endl 
+                << "\tLast Name: " << userList.front().lName << endl 
+                << "\tAge " << userList.front().age << endl 
+                << "\tCredit Card Number: " << userList.front().cardNum << endl 
+                << "\tTotal Reward Points " << userList.front().points << endl << endl;
+            userList.pop_front();
+            ++i;
+        }
+        fout.close();
+    }
+    return true;
+
+}
+
 bool loadProducts(forward_list<ProdNode>& prodList, string fileName){
     prodList.clear();       //clear any current data
     ifstream fin(fileName);

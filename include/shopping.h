@@ -6,7 +6,7 @@
 #include <iostream>
 #include <unistd.h>
 #include <vector>
-#include <sstream>
+#include <fstream>
 #include "registration.h"
 #include "prodManagement.h"
 
@@ -60,6 +60,11 @@ forward_list<ProdNode>::iterator findProduct( forward_list<ProdNode>& prodList, 
 //Parameters: s: string to filter
 //Return: integer result of removing non-digit characters, 0 if no digits exist in 's'
 int toInt( string s );
+
+//gives updates user info with new reward amount upon purchase
+//Parameters: 
+//Return: 
+void giveRewards( forward_list<UserNode>::iterator userIt, int totalCharge );
 
 
 

@@ -8,6 +8,7 @@
 #include "shopping.h"
 #include "accountRemoval.h"
 #include "accountViewing.h"
+#include "rewards.h"
 
 using namespace std;
 
@@ -72,13 +73,15 @@ int main (){
           else if(choice == shop){
             loadCustomers( userList, "customers.txt" );
             transList.push_front( shopping( userList, productList, transList ) );
+            saveCustomers(userList, "customers.txt" );
          }
          else if(choice == view){ 
             goToView();
         }
-    //      else if(choice == rewards)
-    //         redRewards();
-    //     }
+        else if(choice == rewards){
+            loadCustomers(userList, "customers.txt");
+            rewardsMenu(userList);
+        }
         else if (choice == 0){
             saveProductData(productList, "products.txt");
             saveTransactions(transList, "transactions.txt");

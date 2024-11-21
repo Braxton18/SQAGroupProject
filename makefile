@@ -23,3 +23,4 @@ cleartxt:
 	> customerNum.txt 
 	> customers.txt 
 	> transactions.txt
+	> rewards.txt

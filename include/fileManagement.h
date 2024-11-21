@@ -18,6 +18,8 @@ using namespace std;
 //Return: true if customers successfully loaded, false otherwise
 bool loadCustomers(forward_list<UserNode>& userList, string fileName);
 
+bool saveCustomers(forward_list<UserNode>& userList, string fileName);
+
 //read product information from a text file and adds products to  a forward_list of product nodes
 //Parameters: prodList: the forward_list to add nodes to
 //           fileName: name of the .txt file to pull product information from, Format: "XXX.txt"

@@ -1,3 +1,5 @@
+//Braxton Reece and Grant Wilke
+
 #ifndef PRODMANAGEMENT_H
 #define PRODMANAGEMENT_H
 

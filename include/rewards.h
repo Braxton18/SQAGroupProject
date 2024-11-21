@@ -1,3 +1,5 @@
+//Braxton Reece and Grant Wilke
+
 #ifndef REWARDS_H
 #define REWARDS_H
 

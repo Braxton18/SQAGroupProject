@@ -1,3 +1,4 @@
+//Braxton Reece and Grant Wilke
 
 #include "rewards.h"
 

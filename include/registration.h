@@ -1,3 +1,5 @@
+//Braxton Reece and Grant Wilke
+
 #ifndef REGISTRATION_H
 #define REGISTRATION_H
 

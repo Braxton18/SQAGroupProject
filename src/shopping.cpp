@@ -1,9 +1,9 @@
-//includes and such
+//Braxton Reece and Grant Wilke
 
+//includes and such
 #include "shopping.h"
 
 using namespace std;
-
 
 TransNode shopping( forward_list<UserNode>& userList, forward_list<ProdNode>& prodList, forward_list<TransNode>& transList ){
     string userID;

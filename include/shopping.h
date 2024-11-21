@@ -1,3 +1,5 @@
+//Braxton Reece and Grant Wilke
+
 #ifndef SHOPPING_H
 #define SHOPPING_H
 
@@ -61,9 +63,10 @@ forward_list<ProdNode>::iterator findProduct( forward_list<ProdNode>& prodList, 
 //Return: integer result of removing non-digit characters, 0 if no digits exist in 's'
 int toInt( string s );
 
-//gives updates user info with new reward amount upon purchase
-//Parameters: 
-//Return: 
+//gives updates user info with new reward amount upon purchase, reads from "rewards.txt"
+//Parameters: userIt: pointer to a UserNode object
+//          totalCharge: total amount spent during a transaction
+//Return: none
 void giveRewards( forward_list<UserNode>::iterator userIt, int totalCharge );
 
 
